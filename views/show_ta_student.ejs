@@ -1,0 +1,51 @@
+<%- include('partials/student-header') -%>
+
+<%#  as this is a ejs file
+        user object is accessible here  %>
+
+<div class="jumbotron">
+    <h1> List of TAs </h1>
+</div>
+
+    <h6>
+        <% var b = (message.length === 0 ) %>
+        <p <%= b ? "hidden" : ""  %> style="color: red" > <%= message %> </p>
+    </h6>
+
+    <div class="formclass">
+
+        <form class="" action="/show_ta_student" method="post">
+    
+            <h3 style="margin-top: 0px; margin-bottom: 20px;"> List of TAs :</h3>
+    
+            <br> 
+
+    
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <label>Select a prof</label>
+                    <select class="form-control" name="prof_id" required>
+                        <option value="" hidden disabled selected >Choose...</option>
+                        <!-- <option value="Male" >Male</option> -->
+
+                        <% for(var i = 0 ; i < prof_list.length ; i++){  %>
+                            
+                        <option value= <%= prof_list[i].prof_id %>  > <%= prof_list[i].prof_id %> </option>
+                        <% } %>
+
+                    </select>
+                    <!-- <input autofocus required type="text" class="form-control"  name="p1" > -->
+
+                </div>
+                
+            </div>  
+    
+            <hr class="ruler">
+            <button type="submit" class=" form-control btn btn-lg btn-success finalbutton expand" >Submit</button>
+        
+        </form>
+    
+    </div>
+
+<%- include('partials/user-footer') -%>

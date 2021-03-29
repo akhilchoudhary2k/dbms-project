@@ -1,0 +1,53 @@
+<%- include('partials/student-header') -%>
+
+<%#  comment  %>
+
+<div class="jumbotron">
+    <h1> View TAs </h1> 
+</div>
+
+
+<div class="box">
+    <h2> TA list of professor <%= first_name %>:</h2>
+    <div class="container">
+        <br>
+        <h5  style="text-align:left" >Count = <%=ta_list.length%> </h5>
+        <table class="table table-striped  mytable">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">S. No.</th>
+                    <th scope="col">TA ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i=0; i < ta_list.length ; i++){ %>
+                <tr>
+                    <th scope="row"> <%= i+1 %> </th>
+                    <% var ta = ta_list[i] %>
+                    <td><%= ta.ta_id %></td>
+                    
+                    <td><%= ta.first_name + " " + ta.last_name %></td>                    
+                    <td> <%=ta.email%> </td>
+                    
+                </tr>
+                <% } %>
+
+            </tbody>
+
+        </table>
+    </div>
+
+    
+
+
+
+</div>
+
+
+
+
+<%- include('partials/user-footer') -%>

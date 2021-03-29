@@ -1,0 +1,32 @@
+<%- include('partials/admin-header') -%>
+
+<%#  comment  %>
+
+
+<div style="margin-top: 150px;" class="box">
+    <h6>
+        <% var b = (message.length === 0 ) %>
+        <p <%= b ? "hidden" : ""  %> style="color: green" > <%= message %> </p>
+    </h6>
+    <h1 class="heading">Add Tag</h1>
+
+    <div>
+    <form class="" action="/admin_add_tag" method="post" >
+        <div class="form-group">
+            <label for="">Tag name<input autofocus type="text" class="form-control" name="tag_name" value="" placeholder="Enter Tag" required></label>
+        </div>
+        <div class="form-group">
+            <label for="">Tag Description<input type="text" class="form-control" name="tag_desc" value="" placeholder="Enter Description" required></label>
+        </div>
+    
+        <div class="form-group">
+            <button style="max-width: 300px" type="submit" class=" form-control btn btn-success btn-sm space" name="button">Add Project +</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+
+
+<%- include('partials/user-footer') -%>

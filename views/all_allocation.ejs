@@ -1,0 +1,58 @@
+<%- include('partials/admin-header') -%>
+
+<%#  comment  %>
+
+
+<div class="jumbotron">
+    <h1> All Allocation List </h1> 
+</div>
+
+<div style="text-align: center; margin-bottom: 30px; margin-top: 50px;">
+   
+</div>
+
+<div class="box">
+
+    
+    <h3> List:</h3>
+
+    <div class="container">
+        <br>
+        <h5  style="text-align:left" >Count = <%=list.length%> </h5>
+        <table class="table table-striped  mytable">
+            <thead class="table-dark">
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Project ID</th>
+                    <th scope="col">Project Title</th>
+                    <th scope="col">Professor Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i=0; i < list.length ; i++){ %>
+                <tr>
+                    <!-- <th scope="row"> <%= i+1 %> </th> -->
+                    <% var s = list[i] %>
+                    <td><%= s.a %></td>
+                    <td><%= s.b %></td>
+                    <td> <%=s.c%> </td>
+                    <td> <%=s.d%> </td>
+                    <td> <%=s.e%> </td>
+
+                </tr>
+                <% } %>
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+  
+</div>
+
+
+<%- include('partials/user-footer') -%>

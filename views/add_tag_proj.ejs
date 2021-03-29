@@ -1,0 +1,85 @@
+<%- include('partials/prof-header') -%>
+
+<div style="margin-top: 80px;" class="box">
+    <h6>
+        <% var b = (message.length === 0 ) %>
+        <p <%= b ? "hidden" : ""  %> style="color: red" > <%= message %> </p>
+    </h6>
+
+
+    
+
+
+
+
+
+<div class="formclass">
+
+    <form class="" action="/add_tag_proj" method="post">
+
+        <h3 style="margin-top: 0px; margin-bottom: 20px;"> Assign tag to your project :</h3>
+
+        <br> 
+        <div class="form-row">
+          
+        <label>Enter Your project ID:</label>
+        <select class="form-control" name="proj_id" required>
+            <option value="" hidden disabled selected >Choose...</option>
+            <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+            <option value=  <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+            <% } %>
+        </select>
+        <br> <br> <br>
+        <label>Select a tag</label>
+        <select class="form-control" name="tag_name" required>
+            <option value="" hidden disabled selected >Choose...</option>
+            <% for(var i = 0 ; i < tag_list.length ; i++){  %>
+            <option value= <%= tag_list[i].tag_name %>  > <%= tag_list[i].tag_name %> </option>
+            <% } %>
+        </select>
+
+        </div>
+
+        <button type="submit" class=" form-control btn btn-lg btn-success finalbutton expand" >Submit</button>
+    
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+    <br> <br>
+    <h4> Available Tags: </h4>
+    <div class="container">
+        <br>
+        <h5  style="text-align:left" >Count = <%=tag_list.length%> </h5>
+        <table class="table table-striped  mytable">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tag Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < tag_list.length ; i++){ %>
+                <tr>
+                    <th scope="row"> <%= i+1 %> </th>
+                    <td><%= tag_list[i].tag_name %></td>  
+                </tr>
+                <% } %>
+
+            </tbody>
+
+        </table>
+    </div>
+   
+
+</div>
+
+<%- include('partials/user-footer') -%>

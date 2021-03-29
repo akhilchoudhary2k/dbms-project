@@ -1,0 +1,57 @@
+<%- include('partials/student-header') -%>
+
+<%#  as this is a ejs file
+        user object is accessible here  %>
+
+<div class="jumbotron">
+    <h1> Add your phone number. </h1>
+</div>
+
+
+<div class="box">
+    <h6>
+        <% var b = (message.length === 0 ) %>
+        <p <%= b ? "hidden" : ""  %> style="color: green" > <%= message %> </p>
+    </h6>
+    <h2>Hi <%= username %> </h2> <br>
+    <h3>Your Phone list:</h3>
+
+
+    <div class="container">
+        <br>
+        <h5  style="text-align:left" >Count = <%=phone_list.length%> </h5>
+        <table class="table table-striped  mytable">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">S. No.</th>
+                    <th scope="col">Phone Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i=0; i < phone_list.length ; i++){ %>
+                <tr>
+                    <th scope="row"> <%= i+1 %> </th>               
+                    <td> <%= phone_list[i].phone %> </td>
+                    <% var link_to_del = "/del_phone/"+phone_list[i].phone %>
+                    <td><a style="margin-left: 15px;" class="btn btn-danger col-5" href=<%= link_to_del %> >Delete</a></td>
+                </tr>
+                <% } %>
+            </tbody>
+
+        </table>
+    </div>
+    <br>
+    <form class="" action="/student_add_phone" method="post" >
+        <div class="form-group">
+            <label for="">Phone number<input autofocus type="number" class="form-control" name="phone_num" value="" placeholder="Enter phone number:" required>
+        </div>
+        <div class="form-group">
+            <button style="width: 300px;" type="submit" class=" form-control btn btn-success" name="button">Add Number</button>
+        </div>
+    </form>
+</div>
+
+
+<%- include('partials/user-footer') -%>

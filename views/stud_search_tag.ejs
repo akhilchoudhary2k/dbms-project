@@ -1,0 +1,66 @@
+<%- include('partials/student-header') -%>
+
+<%#  as this is a ejs file
+        user object is accessible here  %>
+
+<div class="jumbotron">
+    <h1> Search projects by tags </h1>
+</div>
+
+
+    <div class="formclass">
+
+        <form class="" action="/stud_search_tag" method="post">
+    
+            <h3 style="margin-top: 0px; margin-bottom: 20px;"> select a tag :</h3>
+    
+            <br> 
+
+    
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <label>Select a tag</label>
+                    <select class="form-control" name="tag_name" required>
+                        <option value="" hidden disabled selected >Choose...</option>
+                        <!-- <option value="Male" >Male</option> -->
+
+                        <% for(var i = 0 ; i < tag_list.length ; i++){  %>
+                            
+                        <option value= <%= tag_list[i].tag_name %>  > <%= tag_list[i].tag_name %> </option>
+                        <% } %>
+
+                    </select>
+                    <!-- <input autofocus required type="text" class="form-control"  name="p1" > -->
+
+                </div>
+                
+            </div>  
+    
+            <hr class="ruler">
+            <button type="submit" class=" form-control btn btn-lg btn-success finalbutton expand" >Submit</button>
+        
+        </form>
+    
+    </div>
+
+
+<!-- <div style="margin-top: 150px;" class="box">
+    <h2>Hi <%= username %> </h2> <br>
+    <h5> Tags available:</h5>
+    <% var len = Math.floor(tag_list.length) ; %>
+    <% for(var i=0; i<len ; i++){ %>
+            <% var tag = tag_list[i] %>
+            <p> <%= tag.tag_name %> </p>
+    <% } %>
+    <form class="" action="/stud_search_tag" method="post" >
+        <div class="form-group">
+            <label for="">Tag Name<input autofocus type="text" class="form-control" name="tag_name" value="" placeholder="Enter tag name" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class=" form-control btn btn-success btn-lg space" name="button">Search by tag</button>
+        </div>
+    </form>
+</div> -->
+
+<%- include('partials/user-footer') -%>

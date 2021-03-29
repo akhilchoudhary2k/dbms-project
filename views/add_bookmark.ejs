@@ -1,0 +1,57 @@
+<%- include('partials/student-header') -%>
+
+<%#  as this is a ejs file
+        user object is accessible here  %>
+
+<div class="jumbotron">
+    <h1> Bookmark a project </h1>
+</div>
+
+<div class="formclass">
+
+    <form class="" action="/add_bookmark" method="post">
+
+        <h3 style="margin-top: 0px; margin-bottom: 20px;"> List of Projects :</h3>
+
+        <br> 
+
+
+        <div class="form-row">
+            
+            <div class="form-group col-md-6">
+                <label>Select a project id</label>
+                <select class="form-control" name="project_id" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <!-- <option value="Male" >Male</option> -->
+
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                        
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+
+                </select>
+                <!-- <input autofocus required type="text" class="form-control"  name="p1" > -->
+
+            </div>
+            
+        </div>  
+
+        <hr class="ruler">
+        <button type="submit" class=" form-control btn btn-lg btn-success finalbutton expand" >Submit</button>
+    
+    </form>
+
+</div>
+
+<!-- <div style="margin-top: 150px;" class="box">
+    <form class="" action="/add_bookmark" method="post" >
+        <div class="form-group">
+            <label for="">Project ID<input autofocus type="text" class="form-control" name="project_id" value="" placeholder="Enter project ID:" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class=" form-control btn btn-success btn-lg space" name="button">Add Bookmark</button>
+        </div>
+    </form>
+</div> -->
+
+<%- include('partials/user-footer') -%>

@@ -1,0 +1,124 @@
+<%- include('partials/student-header') -%>
+
+<%#    %>
+
+<div class="jumbotron">
+    <h1> Update Details  </h1>
+
+</div>
+
+
+<div class="container">
+    <div class="box">
+        
+        <h6
+        <% var b = (message.length === 0 ) %>
+        <p <%= b ? "hidden" : ""  %> style="color: green" > <%= message %> </p>
+        </h6>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="formclass">
+
+    <form class="" action="/give_preference" method="post">
+
+        <h2 style="margin-top: 0px; margin-bottom: 20px;">Fill  Project  IDs :</h2>
+
+        <br> <br>
+        <p>If already filled they will appear in respective places</p>
+        <hr class="ruler">
+
+        <div class="form-row">
+            
+            <div class="form-group col-md-6">
+                <label>Preference 1 :</label>
+
+                <select class="form-control" name="p1" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value=  <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+
+                </select>
+
+            </div>
+            <br>
+            <div class="form-group col-md-6">
+                <label>Preference 2 :</label>
+                <select class="form-control" name="p2" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 3 :</label>
+                <select class="form-control" name="p3" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 4 :</label>
+                <select class="form-control" name="p4" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 5 :</label>
+                <select class="form-control" name="p5" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 6 :</label>
+                <select class="form-control" name="p6" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 7 :</label>
+                <select class="form-control" name="p7" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Preference 8 :</label>
+                <select class="form-control" name="p8" required>
+                    <option value="" hidden disabled selected >Choose...</option>
+                    <% for(var i = 0 ; i < pid_list.length ; i++){  %>
+                    <option value= <%= pid_list[i].project_id %>  >  <%= pid_list[i].title %> (id=<%= pid_list[i].project_id %>)  </option>
+                    <% } %>
+                </select>
+            </div>
+        </div>  
+
+        <hr class="ruler">
+        <button type="submit" class=" form-control btn btn-lg btn-success finalbutton expand" >Submit</button>
+    
+    </form>
+
+</div>
+
+
+
+<%- include('partials/user-footer') -%>

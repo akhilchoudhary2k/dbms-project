@@ -1,0 +1,26 @@
+<%- include('partials/student-header') -%>
+
+<%#  comment  %>
+
+
+
+<div class="box">
+    <br> <br> <br> <br> <br> <br> <br>
+    <h3> You have been allocated project : <%=project_id%> </h3>
+    <br>
+    <!-- <h3> Click below to see more details </h3> -->
+
+
+    
+    <% var pid = project_id %>
+    <% var link = "/view_proj_detail/" + pid  %>
+    <a style="margin-left: 15px;" class="btn btn-success col-7" href=<%=link%> >Click here to see more details</a> 
+
+
+
+</div>
+
+
+
+
+<%- include('partials/user-footer') -%>

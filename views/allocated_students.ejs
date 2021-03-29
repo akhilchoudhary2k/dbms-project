@@ -1,0 +1,62 @@
+<%- include('partials/prof-header') -%>
+
+<%#  comment  %>
+
+<div class="jumbotron">
+    <h1> View Allocated students </h1> 
+</div>
+
+<div style="text-align: center; margin-bottom: 30px; margin-top: 50px;">
+   
+</div>
+
+<div class="box">
+    <h2>Hi Prof. <%= username %> </h2> <br>
+    <h5> Project list:</h5>
+
+    <div class="container">
+        <br>
+        <h5  style="text-align:left" >Count = <%=student_list.length%> </h5>
+        <table class="table table-striped  mytable">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">S. No.</th>
+                    <th scope="col">Project ID</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i=0; i < student_list.length ; i++){ %>
+                <tr>
+                    <th scope="row"> <%= i+1 %> </th>
+                    <% var student = student_list[i] %>
+                    <td><%= student.allocated_proj_id%></td>
+                    <td><%= student.student_id %></td>                  
+                    <td style="padding-right: 20px;"> <%=student.first_name%> </td>                
+                    <td style="padding-right: 50px;"> <%=student.email%> </td>                         
+                </tr>
+                <% } %>
+
+            </tbody>
+
+        </table>
+    </div>
+    <!--
+    <% var len = Math.floor(student_list.length) ; %>
+    <% for(var i=0; i<len ; i++){ %>
+            <% var student = student_list[i] %>
+            <p> <%= student.allocated_proj_id %> </p>
+            <p> <%= student.student_id %> </p>
+            <p> <%= student.email %> </p>
+            <br><br>
+    <% } %>-->
+</div>
+
+
+
+
+<%- include('partials/user-footer') -%>
