@@ -726,7 +726,7 @@ app.get('/add_ta',function(req,res){
 })
 
 app.post('/add_ta',(req,res)=>{
-    let sql='insert into ta values("'+req.body.roll_no+'","'+req.session.username+'","'+req.body.f_name+'","'+req.body.l_name+'","'+req.body.email+'")';
+    var sql='insert into ta values("'+req.body.roll_no+'","'+req.session.username+'","'+req.body.f_name+'","'+req.body.l_name+'","'+req.body.email+'")';
     //console.log(sql);
     console.log(req.session.username + " added a TA.");
 	    connection.query(sql,(err,result)=>
@@ -746,7 +746,7 @@ app.post('/add_ta',(req,res)=>{
 app.get('/show_ta', (req, res)=> {
     if(req.session.loggedin){
         console.log("Prof."+req.session.username + " is viewing TA.");
-        let sql='select * from ta where prof_id="'+req.session.username +'"';
+        var sql='select * from ta where prof_id="'+req.session.username +'"';
 	    connection.query(sql,(err,result)=>
 		{
             if(err)
@@ -853,7 +853,7 @@ app.get('/del_ta/:id',(req,res) => {
             }
             else if(result[0].ta_ct==0)
             {
-                let sql='select * from ta where prof_id="'+req.session.username+'"';
+                var sql='select * from ta where prof_id="'+req.session.username+'"';
                 connection.query(sql,(err,result)=>
                 {
                     if(err)
@@ -880,7 +880,7 @@ app.get('/del_ta/:id',(req,res) => {
                     }
                     else
                     {
-                        let sql='select * from ta where prof_id="'+req.session.username+'"';
+                        var sql='select * from ta where prof_id="'+req.session.username+'"';
                         connection.query(sql,(err,result)=>
                         {
                             if(err)
@@ -1125,7 +1125,7 @@ app.post("/give_preference", (req,res)=>{
     if(req.session.loggedin){
         console.log(req.body)
         // set the project preferences of student here
-        // let sql = 'update student set email="' + req.body.email + '",' +  'cgpa =' + req.body.cgpa + ', dept="' + req.body.dept + '" where student_id="'+req.session.username+'"';
+        // var sql = 'update student set email="' + req.body.email + '",' +  'cgpa =' + req.body.cgpa + ', dept="' + req.body.dept + '" where student_id="'+req.session.username+'"';
 
         var q = 'update student set pref_1=' + req.body.p1 + ', pref_2=' + req.body.p2 + ', pref_3 = ' + req.body.p3  + ', pref_4=' + req.body.p4+ ', pref_5=' + req.body.p5+ ', pref_6=' + req.body.p6+ ', pref_7=' + req.body.p7+ ', pref_8=' + req.body.p8 + ' where student_id = "' + req.session.username + '"' ;
         connection.query(q, (err , result)=>{
@@ -1157,7 +1157,7 @@ app.post("/give_preference", (req,res)=>{
 app.get('/view_projects', (req, res)=> {
     if(req.session.loggedin){
         console.log(req.session.username + " is viewing projects.");
-        let sql='select proj.project_id, proj.prof_id, proj.title, proj.description, prof.first_name, prof.last_name from project as proj inner join professor as prof on prof.prof_id = proj.prof_id order by prof.prof_id, proj.project_id';
+        var sql='select proj.project_id, proj.prof_id, proj.title, proj.description, prof.first_name, prof.last_name from project as proj inner join professor as prof on prof.prof_id = proj.prof_id order by prof.prof_id, proj.project_id';
 	    connection.query(sql,(err,result)=>
 		{
             if(err)
@@ -1452,7 +1452,7 @@ app.get('/del_bookmark/:id',(req,res) => {
             }
             else if(result[0].book_ct==0)
             {
-                let sql='select * from bookmark where student_id="'+req.session.username +'"';
+                var sql='select * from bookmark where student_id="'+req.session.username +'"';
                 connection.query(sql,(err,result)=>
                 {
                     if(err)
@@ -1479,7 +1479,7 @@ app.get('/del_bookmark/:id',(req,res) => {
                     }
                     else
                     {
-                        let sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
+                        var sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
                         connection.query(sql,(err,result)=>
                         {
                             if(err)
@@ -1508,7 +1508,7 @@ app.get('/del_bookmark/:id',(req,res) => {
 app.get('/view_bookmark', (req, res)=> {
     if(req.session.loggedin){
         console.log(req.session.username + " is seeing view_bookmark.");
-        let sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
+        var sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
 	    connection.query(sql,(err,result)=>
 		{
             console.log(result)
@@ -1542,7 +1542,7 @@ app.get('/del_bookmark',function(req,res){
 
 app.post('/del_bookmark',function(req,res){
     if(req.session.loggedin){
-        let sql='delete from bookmark where student_id="'+req.session.username+'" and project_id='+req.body.project_id;
+        var sql='delete from bookmark where student_id="'+req.session.username+'" and project_id='+req.body.project_id;
         console.log(req.session.username + " Bookmark deleted.");
 	    connection.query(sql,(err,result)=>
 		{
@@ -1551,7 +1551,7 @@ app.post('/del_bookmark',function(req,res){
                 console.log(err);
                 throw err;
             }
-            let sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
+            var sql='select project.project_id,project.prof_id,project.title,project.description from project,bookmark where bookmark.student_id="'+req.session.username+'" and bookmark.project_id=project.project_id';
             connection.query(sql,(err,result)=>
             {
                 if(err)
@@ -1603,7 +1603,7 @@ app.get('/show_ta_student',(req,res)=>{
 
 app.post('/show_ta_student',(req,res)=>{
     if(req.session.loggedin){
-        let sql = 'select count(*) as cnt from professor where prof_id = "' + req.body.prof_id +'"';
+        var sql = 'select count(*) as cnt from professor where prof_id = "' + req.body.prof_id +'"';
         connection.query(sql,(err,result)=>{
             if(result[0].cnt==0){
                 console.log(err);
@@ -1612,10 +1612,10 @@ app.post('/show_ta_student',(req,res)=>{
                 })
             }
             else{
-                let sql = 'select first_name from professor where prof_id = "' + req.body.prof_id +'"';
+                var sql = 'select first_name from professor where prof_id = "' + req.body.prof_id +'"';
                 connection.query(sql,(err,result)=>{
                     var fname = result[0].first_name;
-                    let sql = 'select * from ta where prof_id ="' + req.body.prof_id +'"';
+                    var sql = 'select * from ta where prof_id ="' + req.body.prof_id +'"';
                     connection.query(sql,(err,result)=>{
                         res.render('show_ta_student_list',{
                             first_name : fname,
@@ -1638,7 +1638,7 @@ app.get('/student_update_details',(req,res)=>{
         console.log(req.session.username + " is seeing a update_details.");
         //res.render("student-updateDetails",{
             //username : req.session.username
-            let sql = 'select * from student where student_id="'+req.session.username+'"';
+            var sql = 'select * from student where student_id="'+req.session.username+'"';
             connection.query(sql,(err,result)=>
 		    {
                 console.log(result[0])
@@ -1772,7 +1772,7 @@ app.post('/prof_update_project/:id',(req,res)=>{
 app.post('/prof_update_project',(req,res)=>{
     if(req.session.loggedin){
         console.log(req.session.username + " is seeing a prof_update_project");
-        let sql = 'update project set title="' + req.body.project_title + '",description="' + req.body.project_desc + '"where project_id=' + req.body.project_id ;
+        var sql = 'update project set title="' + req.body.project_title + '",description="' + req.body.project_desc + '"where project_id=' + req.body.project_id ;
         //'update student set email="' + req.body.email + '",' +  'cgpa =' + req.body.cgpa + ', dept="' + req.body.dept + '" where student_id="'+req.session.username+'"';
         connection.query(sql,(err,result)=>{
             if(err) throw err
@@ -1880,14 +1880,14 @@ app.post('/admin_add_tag',(req,res)=>{
 
 app.post('/student_update_details',(req,res)=>{
     if(req.session.loggedin){
-        let sql = 'update student set email="' + req.body.email + '",' +  'cgpa =' + req.body.cgpa + ', dept="' + req.body.dept + '" where student_id="'+req.session.username+'"';
+        var sql = 'update student set email="' + req.body.email + '",' +  'cgpa =' + req.body.cgpa + ', dept="' + req.body.dept + '" where student_id="'+req.session.username+'"';
         connection.query(sql,(err,result)=>{
         if(err){
             throw err;
         }
         else{
 
-            let q = 'select * from student where student_id="'+req.session.username+'"';
+            var q = 'select * from student where student_id="'+req.session.username+'"';
             connection.query( q ,(err,result2)=>
 		    {   
                 if(err){
@@ -2108,7 +2108,7 @@ app.get('/admin_home', function(request, response) {
 app.get('/view_project_admin', (req, res)=> {
     if(req.session.loggedin){
         console.log(req.session.username + " is viewing projects.");
-        let sql='select proj.project_id, proj.prof_id, proj.title, proj.description, prof.first_name, prof.last_name from project as proj inner join professor as prof on prof.prof_id = proj.prof_id';
+        var sql='select proj.project_id, proj.prof_id, proj.title, proj.description, prof.first_name, prof.last_name from project as proj inner join professor as prof on prof.prof_id = proj.prof_id';
 	    connection.query(sql,(err,result)=>
 		{
             if(err)
@@ -2135,7 +2135,7 @@ app.get('/view_project_admin', (req, res)=> {
 app.get('/view_student_admin', (req, res)=> {
     if(req.session.loggedin){
         console.log(req.session.username + " is viewing students.");
-        let sql='select * from student';
+        var sql='select * from student';
 	    connection.query(sql,(err,result)=>
 		{
             if(err)
